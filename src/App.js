@@ -11,8 +11,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Login />} />
         <Route exact path="/Registro" element={<Registro />} />
+        <Route exact path="/TabelaUsuarios" element={<TabelaUsuarios />} />
       </Routes> 
-      {/* <TabelaUsuarios/> */}
       <GlobalStyles/>
     </Router>
   );

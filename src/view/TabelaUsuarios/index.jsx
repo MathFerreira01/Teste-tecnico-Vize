@@ -1,49 +1,59 @@
-import React, {useState, useEffect} from "react";
-import api from '../../services/api'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { usersTable } from "../../services/usersTable";
+
+import Button from "@mui/material/Button";
 
 import * as P from "./style";
 
 function TabelaUsuarios() {
-  const [user, setUser] = useState();
+  const [token, setToken] = useState();
+  const [users, setUsers] = useState([]);
+  
+  const handleChangeSubmit = async (token) => {
+    console.log(token) 
+    const response = await usersTable(token);
+    console.log(response.data)
 
+    if(response.data) {
+      setUsers(response.data)
+      console.log(users)
+    }
+  }
+
+  const clearStorage = () => window.localStorage.clear();
+  
   useEffect(() => {
-    api
-      .get("/api/users?page=1")
-      .then((response) => setUser(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  }, []);
+    const user = JSON.parse(localStorage.getItem("userData"))
+    setToken(user.Token);
+
+    if(token) {
+      console.log("entro fdf")
+      handleChangeSubmit(token)
+    }
+  }, [token]);
 
   return (
-    <P.Tabela>
-      <thead>
-        <P.TabelaTitulo>
-          <th>ID</th>
-          <th>Nome</th>
-        </P.TabelaTitulo>
+    <>
+      <P.ButtonLogout>
+        <Link to="/"><Button variant="contained" onClick={clearStorage}>Logout</Button></Link>       
+      </P.ButtonLogout>
 
-        <P.TabelaUsuarios>
-          <td>{user?.id}</td>
-          <td>{user?.name}</td>
-        </P.TabelaUsuarios>
-
-        <P.TabelaUsuarios>
-          <td>1</td>
-          <td>User 1</td>
-        </P.TabelaUsuarios>
-
-        <P.TabelaUsuarios>
-          <td>1</td>
-          <td>User 1</td>
-        </P.TabelaUsuarios>
-
-        <P.TabelaUsuarios>
-          <td>1</td>
-          <td>User 1</td>
-        </P.TabelaUsuarios>
-      </thead>
-    </P.Tabela>
+      <P.Tabela>
+        <thead>
+          <P.TabelaTitulo>
+            <th>ID</th>
+            <th>Nome</th>
+          </P.TabelaTitulo>
+          {users.map(user => (
+            <P.TabelaUsuarios key={user?.id}>
+              <td>{user?.id}</td>
+              <td>{user?.name}</td>
+          </P.TabelaUsuarios>
+          ))}         
+        </thead>
+      </P.Tabela>
+    </>
   );
 }
 

@@ -5,9 +5,14 @@ export const Container = styled.form`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
+  
   position: relative;
   top: 17.6rem;
+
+  span {
+    font-size: 0.8rem;
+    color:red;
+  }
 `;
 
 export const SectionInput = styled.section`

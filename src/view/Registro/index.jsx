@@ -16,24 +16,38 @@ import { Link } from "react-router-dom";
 function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [messageError, setMessageError] = useState("");
+  const [showMessageError, setShowMessageError] = useState(false);
 
   const [keyword, setKeyword] = useState({
     password: "",
     showPassword: false,
   });
 
-  const handleChangeForm = async (event) => {
+  const handleChangeSubmit = async (event) => {
     event.preventDefault();
+
     const response = await registration({
       email,
       password: keyword.password,
       name,
     });
+
+    if (response.code === 1) {
+      setShowMessageError(true);
+      setMessageError(response.message);
+    }
+
+    if (response.code === 0) {
+      window.alert("Cadastro feito com sucesso")
+      window.location.href = "/";
+    }
     console.log(response);
   };
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
+    setShowMessageError(false);
   };
 
   const handleChangePassword = (prop) => (event) => {
@@ -48,76 +62,69 @@ function Register() {
     });
   };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const handleMouseDownPassword = (event) => event.preventDefault();
 
-  const handleChangeName = (event) => {
-    setName(event.target.value);
-  };
+  const handleChangeName = (event) => setName(event.target.value);
 
   return (
-    <>
-      <C.Container onSubmit={handleChangeForm}>
-        <C.SectionInput>
-          <TextField
-            style={{ width: "389px" }}
-            id="email"
-            placeholder="Usuário"
-            type="email"
-            variant="filled"
-            value={email}
-            onChange={handleChangeEmail}
-          />
-        </C.SectionInput>
+    <C.Container onSubmit={handleChangeSubmit}>
+      {showMessageError ? <span>* {messageError}</span> : null}
+      <C.SectionInput>
+        <TextField
+          style={{ width: "389px" }}
+          id="email"
+          placeholder="Usuário"
+          type="email"
+          variant="filled"
+          value={email}
+          onChange={handleChangeEmail}
+        />
+      </C.SectionInput>
 
-        <C.SectionInput>
-          <FilledInput
-            style={{ width: "389px" }}
-            id="password"
-            placeholder="Senha"
-            variant="filled"
-            type={keyword.showPassword ? "text" : "password"}
-            value={keyword.password}
-            onChange={handleChangePassword("password")}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {keyword.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </C.SectionInput>
+      <C.SectionInput>
+        <FilledInput
+          style={{ width: "389px" }}
+          id="password"
+          placeholder="Senha"
+          variant="filled"
+          type={keyword.showPassword ? "text" : "password"}
+          value={keyword.password}
+          inputProps={{ minLength: 6 }}
+          onChange={handleChangePassword("password")}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {keyword.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+      </C.SectionInput>
 
-        <C.SectionInput>
-          <TextField
-            style={{ width: "389px" }}
-            id="name"
-            placeholder="Nome"
-            type="name"
-            variant="filled"
-            value={name}
-            onChange={handleChangeName}
-          />
-        </C.SectionInput>
+      <C.SectionInput>
+        <TextField
+          style={{ width: "389px" }}
+          id="name"
+          placeholder="Nome"
+          type="name"
+          variant="filled"
+          value={name}
+          onChange={handleChangeName}
+        />
+      </C.SectionInput>
 
-        <C.ButtonRegitro>
-          <Btn name="Registrar" />
-        </C.ButtonRegitro>
+      <C.ButtonRegitro>
+        <Btn name="Registrar" />
+      </C.ButtonRegitro>
 
-        <C.BtnBack>
-          <Link style={{ textDecoration: "none" }} to="/">
-            <Btn name="Voltar" />
-          </Link>
-        </C.BtnBack>
-
-      </C.Container>
-    </>
+      <Link style={{ marginTop: "2.4em" }} to="/">
+        <Btn name="Voltar" />
+      </Link>
+    </C.Container>
   );
 }
 

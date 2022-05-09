@@ -15,6 +15,20 @@ export const Tabela = styled.table`
   }
 `;
 
+export const ButtonLogout = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  padding: 1.5rem;
+
+  Button {
+    width: 17rem;
+    height: 3rem;
+    border-radius: 100px;
+  }
+`;
+
 export const TabelaTitulo = styled.tr`
   background: #cce5ff;
   border: 1px solid #fff;

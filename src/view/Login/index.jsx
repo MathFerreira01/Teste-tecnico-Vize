@@ -15,17 +15,32 @@ import Button from "@mui/material/Button";
 import Btn from "../../components/Button";
 
 function Login() {
+  
   const [email, setEmail] = useState("");
+  const [messageError, setMessageError] = useState("");
+  const [showMessageError, setShowMessageError] = useState(false);
   const [keyword, setKeyword] = useState({
     password: "",
     showPassword: false,
   });
 
-  const handleChangeForm = async (event)  => {
+  const handleChangeSubmit = async (event) => {
     event.preventDefault();
-        const response = await auth({ email, password: keyword.password });
-        console.log(response);
-  }
+    const response = await auth({ email, password: keyword.password });
+    console.log(response);
+
+    if (response.code === 1) {
+      setShowMessageError(true);
+      setMessageError(response.message);
+    }
+
+    if (response.code === 0) {
+      localStorage.setItem("userData", JSON.stringify(response.data));
+      window.location.href = "/TabelaUsuarios";
+    }
+
+    console.log(response);
+  };
 
   const handleChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -43,12 +58,13 @@ function Login() {
     });
   };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const handleMouseDownPassword = (event) => event.preventDefault();
+  
 
   return (
-    <S.Container onSubmit={handleChangeForm}>
+    <S.Container onSubmit={handleChangeSubmit}>
+
+      {showMessageError ? <span>* {messageError}</span> : null}
 
       <S.SectionInput>
         <TextField
@@ -69,8 +85,8 @@ function Login() {
           placeholder="Senha"
           type={keyword.showPassword ? "text" : "password"}
           value={keyword.password}
+          inputProps={{ minLength: 6 }}
           onChange={handleChangePassword("password")}
-
           endAdornment={
             <InputAdornment position="end">
               <IconButton
@@ -86,15 +102,14 @@ function Login() {
       </S.SectionInput>
 
       <S.ButtonLogin>
-        <Btn name="Login"/>
+        <Btn name="Login" />
       </S.ButtonLogin>
 
       <S.ButtonRegister>
-        <Link style={{ textDecoration: "none" }} to="/Registro">
+        <Link to="/Registro">
           <Button variant="contained">Registrar</Button>
         </Link>
       </S.ButtonRegister>
-      
     </S.Container>
   );
 }

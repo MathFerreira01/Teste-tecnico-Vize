@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Btn from "../../components/Button";
 
 export const Container = styled.form`
   display: flex;
@@ -8,6 +9,11 @@ export const Container = styled.form`
 
   position: relative;
   top: 17.6rem;
+
+  span {
+    font-size: 0.8rem;
+    color: red;
+  }
 `;
 
 export const SectionInput = styled.section`
@@ -29,6 +35,3 @@ export const ButtonRegitro = styled.div`
   }
 `;
 
-export const BtnBack = styled.div`
-  margin-top: 2.4em;
-`;
