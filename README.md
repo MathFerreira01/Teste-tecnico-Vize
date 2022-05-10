@@ -32,4 +32,4 @@ Este projeto representa uma página de cadastro, onde o cliente tem a opção de
 
 <h2>Observações</h2>
 
-Ao realizar um novo cadastro tentei fazer o redirecionamento direto para a tabela de usuários, porém, estava ocorrendo erro no token por ser diferente da página de Login. A solução para resolver este problema foi, após realizar o novo cadastro, exibi uma mensagem "Cadastro realizado com sucesso" e redirecionava para a página de login, inseria as informações do novo cadastro, e após logar, redirecionava para a tabela de usuários.
+Ao realizar um novo cadastro tentei fazer o redirecionamento direto para a tabela de usuários, porém, estava ocorrendo erro no token por ser diferente da página de Login. A solução para resolver este problema foi, após realizar o novo cadastro, exibi uma mensagem "Cadastro realizado com sucesso" e redirecionar para a página de login, inseria as informações do novo cadastro, e após logar, redirecionava para a tabela de usuários.
