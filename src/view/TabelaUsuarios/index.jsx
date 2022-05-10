@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { usersTable } from "../../services/usersTable";
 
-import Button from "@mui/material/Button";
-
 import * as P from "./style";
+import Header from "../../components/Header";
 
 function TabelaUsuarios() {
   const [token, setToken] = useState();
@@ -18,8 +16,6 @@ function TabelaUsuarios() {
     }
   };
 
-  const clearStorage = () => window.localStorage.clear();
-
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userData"));
     setToken(user.Token);
@@ -31,16 +27,7 @@ function TabelaUsuarios() {
 
   return (
     <>
-      <P.ButtonLogout>
-        <Link to="/">
-
-          <Button variant="contained" onClick={clearStorage}>
-            Logout
-          </Button>
-          
-        </Link>
-      </P.ButtonLogout>
-
+      <Header/>
       <P.Tabela>
         <thead>
 

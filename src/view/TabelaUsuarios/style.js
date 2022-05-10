@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Tabela = styled.table`
   width: 65%;
   margin: auto;
+  margin-top: 4%;
   border-collapse: collapse;
 
   th,
