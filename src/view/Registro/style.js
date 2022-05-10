@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Btn from "../../components/Button";
 
 export const Container = styled.form`
   display: flex;
@@ -8,7 +7,7 @@ export const Container = styled.form`
   flex-direction: column;
 
   position: relative;
-  top: 17.6rem;
+  top: 20%;
 
   span {
     font-size: 0.8rem;
@@ -35,3 +34,11 @@ export const ButtonRegitro = styled.div`
   }
 `;
 
+export const ButtonLogout = styled(ButtonRegitro)`
+  margin-top: 2.4em;
+
+  Button {
+        width: 16rem;
+        height: 3rem;
+    }
+`;

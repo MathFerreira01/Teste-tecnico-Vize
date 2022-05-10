@@ -5,13 +5,13 @@ export const Container = styled.form`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
+
   position: relative;
-  top: 17.6rem;
+  top: 20%;
 
   span {
     font-size: 0.8rem;
-    color:red;
+    color: red;
   }
 `;
 
@@ -20,25 +20,25 @@ export const SectionInput = styled.section`
 `;
 
 export const ButtonLogin = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
 
-    Button {
-        width: 20rem;
-        height: 3rem;
-        border-radius: 100px;
-        text-decoration: none;
-        background: #00639C;
-    }
+  Button {
+    width: 20rem;
+    height: 3rem;
+    border-radius: 100px;
+    text-decoration: none;
+    background: #00639c;
+  }
 `;
 
 export const ButtonRegister = styled(ButtonLogin)`
-    margin-top: 2.4em;
+  margin-top: 2.4em;
 
-    Button {
-        width: 16rem;
-        height: 3rem;
-    }
+  Button {
+    width: 16rem;
+    height: 3rem;
+  }
 `;

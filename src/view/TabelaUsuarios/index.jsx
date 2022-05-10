@@ -9,48 +9,53 @@ import * as P from "./style";
 function TabelaUsuarios() {
   const [token, setToken] = useState();
   const [users, setUsers] = useState([]);
-  
-  const handleChangeSubmit = async (token) => {
-    console.log(token) 
-    const response = await usersTable(token);
-    console.log(response.data)
 
-    if(response.data) {
-      setUsers(response.data)
-      console.log(users)
+  const handleChangeSubmit = async (token) => {
+    const response = await usersTable(token);
+
+    if (response.data) {
+      setUsers(response.data);
     }
-  }
+  };
 
   const clearStorage = () => window.localStorage.clear();
-  
+
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userData"))
+    const user = JSON.parse(localStorage.getItem("userData"));
     setToken(user.Token);
 
-    if(token) {
-      console.log("entro fdf")
-      handleChangeSubmit(token)
+    if (token) {
+      handleChangeSubmit(token);
     }
   }, [token]);
 
   return (
     <>
       <P.ButtonLogout>
-        <Link to="/"><Button variant="contained" onClick={clearStorage}>Logout</Button></Link>       
+        <Link to="/">
+
+          <Button variant="contained" onClick={clearStorage}>
+            Logout
+          </Button>
+          
+        </Link>
       </P.ButtonLogout>
 
       <P.Tabela>
         <thead>
+
           <P.TabelaTitulo>
-            <th>ID</th>
+            <th id="title-id">ID</th>
             <th>Nome</th>
           </P.TabelaTitulo>
-          {users.map(user => (
+
+          {users.map((user) => (
             <P.TabelaUsuarios key={user?.id}>
-              <td>{user?.id}</td>
+              <td id="user-id">{user?.id}</td>
               <td>{user?.name}</td>
-          </P.TabelaUsuarios>
-          ))}         
+            </P.TabelaUsuarios>
+          ))}
+
         </thead>
       </P.Tabela>
     </>

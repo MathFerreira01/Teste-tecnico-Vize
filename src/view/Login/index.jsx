@@ -15,7 +15,6 @@ import Button from "@mui/material/Button";
 import Btn from "../../components/Button";
 
 function Login() {
-  
   const [email, setEmail] = useState("");
   const [messageError, setMessageError] = useState("");
   const [showMessageError, setShowMessageError] = useState(false);
@@ -27,7 +26,6 @@ function Login() {
   const handleChangeSubmit = async (event) => {
     event.preventDefault();
     const response = await auth({ email, password: keyword.password });
-    console.log(response);
 
     if (response.code === 1) {
       setShowMessageError(true);
@@ -38,8 +36,6 @@ function Login() {
       localStorage.setItem("userData", JSON.stringify(response.data));
       window.location.href = "/TabelaUsuarios";
     }
-
-    console.log(response);
   };
 
   const handleChangeEmail = (event) => {
@@ -48,7 +44,6 @@ function Login() {
 
   const handleChangePassword = (prop) => (event) => {
     setKeyword({ ...keyword, [prop]: event.target.value });
-    console.log(keyword);
   };
 
   const handleClickShowPassword = () => {
@@ -59,11 +54,9 @@ function Login() {
   };
 
   const handleMouseDownPassword = (event) => event.preventDefault();
-  
 
   return (
     <S.Container onSubmit={handleChangeSubmit}>
-
       {showMessageError ? <span>* {messageError}</span> : null}
 
       <S.SectionInput>

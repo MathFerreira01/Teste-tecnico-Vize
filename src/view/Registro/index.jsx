@@ -8,6 +8,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Button from "@mui/material/Button";
 
 import { registration } from "../../services/registration";
 import Btn from "../../components/Button";
@@ -39,10 +40,9 @@ function Register() {
     }
 
     if (response.code === 0) {
-      window.alert("Cadastro feito com sucesso")
+      window.alert("Cadastro feito com sucesso");
       window.location.href = "/";
     }
-    console.log(response);
   };
 
   const handleChangeEmail = (event) => {
@@ -52,7 +52,6 @@ function Register() {
 
   const handleChangePassword = (prop) => (event) => {
     setKeyword({ ...keyword, [prop]: event.target.value });
-    console.log(keyword);
   };
 
   const handleClickShowPassword = () => {
@@ -118,12 +117,14 @@ function Register() {
       </C.SectionInput>
 
       <C.ButtonRegitro>
-        <Btn name="Registrar" />
+        <Btn name="Registrar"/>
       </C.ButtonRegitro>
 
-      <Link style={{ marginTop: "2.4em" }} to="/">
-        <Btn name="Voltar" />
-      </Link>
+      <C.ButtonLogout>
+        <Link to="/">
+          <Button variant="contained">Voltar</Button>
+        </Link>
+      </C.ButtonLogout>
     </C.Container>
   );
 }
