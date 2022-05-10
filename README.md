@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+<h1>Processo Seletivo Vize</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>⚡ Tech Stack</h2>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+-  [React.js](https://pt-br.reactjs.org/)<br/>
+-  [Styled Components](https://styled-components.com/) 
+-  [Material UI](https://mui.com/pt/) 
 
-### `npm start`
+<h2>Instalando / Começando</h2> 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para executar o projeto, será necessário instalar os seguintes programas:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-  [Node.js](https://nodejs.org/en/)<br/>
+-  [Npm](https://www.npmjs.com/) 
 
-### `npm test`
+<h2>Construção</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+Para construir o projeto com o React, executar o comando abaixo:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    npm install
+    
+O comando irá baixar todas as dependências do projeto.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para iniciar o projeto, execute o comando abaixo:
 
-### `npm run eject`
+    npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<h2>🚀 Features</h2>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Este projeto representa uma página de cadastro, onde o cliente tem a opção de logar com uma conta já existente ou criar uma nova conta.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<h2>Observações</h2>
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ao realizar um novo cadastro tentei fazer o redirecionamento direto para a tabela de usuários, porém, estava ocorrendo erro no token por ser diferente da página de Login. A solução para resolver este problema foi, após realizar o novo cadastro, exibi uma mensagem "Cadastro realizado com sucesso" e redirecionava para a página de login, inseria as informações do novo cadastro, e após logar, redirecionava para a tabela de usuários.
