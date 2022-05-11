@@ -40,7 +40,7 @@ function Register() {
     }
 
     if (response.code === 0) {
-      window.alert("Cadastro feito com sucesso");
+      window.alert("Cadastro realizado com sucesso");
       window.location.href = "/";
     }
   };

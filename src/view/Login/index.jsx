@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import * as S from "./style";
 
+import Btn from "../../components/Button";
+
 import { Link } from "react-router-dom";
 import { auth } from "../../services/auth";
 
@@ -12,7 +14,6 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
-import Btn from "../../components/Button";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -34,7 +35,7 @@ function Login() {
 
     if (response.code === 0) {
       localStorage.setItem("userData", JSON.stringify(response.data));
-      window.location.href = "/TabelaUsuarios";
+      window.location.href = "/tabela-usuarios";
     }
   };
 

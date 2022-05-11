@@ -3,10 +3,12 @@ import { usersTable } from "../../services/usersTable";
 
 import * as P from "./style";
 import Header from "../../components/Header";
+import Loading from "../../components/Loading";
 
 function TabelaUsuarios() {
   const [token, setToken] = useState();
   const [users, setUsers] = useState([]);
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   const handleChangeSubmit = async (token) => {
     const response = await usersTable(token);
@@ -19,6 +21,7 @@ function TabelaUsuarios() {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userData"));
     setToken(user.Token);
+    setRemoveLoading(true);
 
     if (token) {
       handleChangeSubmit(token);
@@ -27,10 +30,12 @@ function TabelaUsuarios() {
 
   return (
     <>
-      <Header/>
+    {!removeLoading && <Loading />}
+
+      <Header />
+
       <P.Tabela>
         <thead>
-
           <P.TabelaTitulo>
             <th id="title-id">ID</th>
             <th>Nome</th>

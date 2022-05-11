@@ -9,7 +9,7 @@ function Header() {
 
   return (
     <M.Container>
-      {<p>Company Logo</p>}
+      <p>...</p>
       <M.Navigation>
         <Link to="/">
           <Button onClick={clearStorage} variant="contained">

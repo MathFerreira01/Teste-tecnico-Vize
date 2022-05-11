@@ -10,8 +10,8 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Login />} />
-        <Route exact path="/Registro" element={<Registro />} />
-        <Route exact path="/TabelaUsuarios" element={<TabelaUsuarios />} />
+        <Route exact path="/registro" element={<Registro />} />
+        <Route exact path="/tabela-usuarios" element={<TabelaUsuarios />} />
       </Routes> 
       <GlobalStyles/>
     </Router>
