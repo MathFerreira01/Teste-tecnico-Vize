@@ -100,7 +100,7 @@ function Login() {
       </S.ButtonLogin>
 
       <S.ButtonRegister>
-        <Link to="/Registro">
+        <Link to="/registro">
           <Button variant="contained">Registrar</Button>
         </Link>
       </S.ButtonRegister>

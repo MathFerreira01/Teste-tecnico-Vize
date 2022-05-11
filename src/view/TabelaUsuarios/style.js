@@ -20,7 +20,7 @@ export const ButtonLogout = styled.div`
   align-items: flex-end;
   justify-content: flex-end;
 
-  padding: 1.5rem;
+  padding: 1.2rem;
 
   Button {
     width: 15rem;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { usersTable } from "../../services/usersTable";
 
 import * as P from "./style";
+
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 

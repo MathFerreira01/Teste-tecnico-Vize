@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.form`
+  height: 100%;
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 
-  position: relative;
-  top: 20%;
-
   span {
     font-size: 0.8rem;
-    color: red;
+    color: #EC002A;
   }
 `;
 
