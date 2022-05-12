@@ -2,7 +2,8 @@
 
 <h2>⚡ Tech Stack</h2>
 
--  [React.js](https://pt-br.reactjs.org/)<br/>
+-  [React.js](https://pt-br.reactjs.org/)
+-  [Typescript](https://www.typescriptlang.org/)
 -  [Styled Components](https://styled-components.com/) 
 -  [Material UI](https://mui.com/pt/) 
 

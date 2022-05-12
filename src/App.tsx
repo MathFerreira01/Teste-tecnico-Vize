@@ -1,5 +1,3 @@
-
-
 import Login from "./view/Login";
 import Registro from "./view/Registro";
 import TabelaUsuarios from "./view/TabelaUsuarios";

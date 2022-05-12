@@ -2,6 +2,11 @@ import React, { ChangeEvent, useState } from "react";
 
 import * as C from "./style";
 
+import { registration } from "../../services/registration";
+import Btn from "../../components/Button";
+
+import { Link } from "react-router-dom";
+
 import TextField from "@mui/material/TextField";
 import FilledInput from "@mui/material/FilledInput";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -9,10 +14,6 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
-
-import { registration } from "../../services/registration";
-import Btn from "../../components/Button";
-import { Link } from "react-router-dom";
 
 interface State {
   email: string;
