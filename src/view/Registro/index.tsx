@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 
 import * as C from "./style";
 
@@ -14,6 +14,16 @@ import { registration } from "../../services/registration";
 import Btn from "../../components/Button";
 import { Link } from "react-router-dom";
 
+interface State {
+  email: string;
+  keyword: string;
+  name: string;
+  messageError: string;
+  showMessageError: boolean;
+  password: string;
+  showPassword:boolean;
+}
+
 function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -25,7 +35,7 @@ function Register() {
     showPassword: false,
   });
 
-  const handleChangeSubmit = async (event) => {
+  const handleChangeSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const response = await registration({
@@ -45,14 +55,15 @@ function Register() {
     }
   };
 
-  const handleChangeEmail = (event) => {
+  const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
     setShowMessageError(false);
   };
 
-  const handleChangePassword = (prop) => (event) => {
-    setKeyword({ ...keyword, [prop]: event.target.value });
-  };
+  const handleChangePassword =
+    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setKeyword({ ...keyword, [prop]: event.target.value });
+    };
 
   const handleClickShowPassword = () => {
     setKeyword({
@@ -61,9 +72,9 @@ function Register() {
     });
   };
 
-  const handleMouseDownPassword = (event) => event.preventDefault();
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault();
 
-  const handleChangeName = (event) => setName(event.target.value);
+  const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => setName(event.target.value);
 
   return (
     <C.Container onSubmit={handleChangeSubmit}>
@@ -85,7 +96,6 @@ function Register() {
           style={{ width: "389px" }}
           id="password"
           placeholder="Senha"
-          variant="filled"
           type={keyword.showPassword ? "text" : "password"}
           value={keyword.password}
           inputProps={{ minLength: 6 }}

@@ -1,3 +1,5 @@
+
+
 import Login from "./view/Login";
 import Registro from "./view/Registro";
 import TabelaUsuarios from "./view/TabelaUsuarios";
@@ -5,17 +7,20 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
+function App () {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Login />} />
-        <Route exact path="/registro" element={<Registro />} />
-        <Route exact path="/tabela-usuarios" element={<TabelaUsuarios />} />
+        <Route  path="/" element={<Login />} />
+        <Route  path="/registro" element={<Registro/>} />
+        <Route  path="/tabela-usuarios" element={<TabelaUsuarios/>} />
       </Routes> 
       <GlobalStyles/>
     </Router>
   );
 }
 
-export default App;
+export default App
+
+
+

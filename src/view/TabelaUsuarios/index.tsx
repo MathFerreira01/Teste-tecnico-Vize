@@ -6,13 +6,17 @@ import * as P from "./style";
 import Header from "../../components/Header";
 import Loading from "../../components/Loading";
 
+interface State {
+  token: string;
+}
+
 function TabelaUsuarios() {
   const [token, setToken] = useState();
   const [users, setUsers] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false);
 
-  const handleChangeSubmit = async (token) => {
-    const response = await usersTable(token);
+  const handleChangeSubmit = async (token: State) => {
+    const response = await usersTable(token)
 
     if (response.data) {
       setUsers(response.data);
@@ -20,7 +24,7 @@ function TabelaUsuarios() {
   };
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userData"));
+    const user = JSON.parse(localStorage.getItem("userData") as string);
     setToken(user.Token);
     setRemoveLoading(true);
 
@@ -42,7 +46,7 @@ function TabelaUsuarios() {
             <th>Nome</th>
           </P.TabelaTitulo>
 
-          {users.map((user) => (
+          {users.map((user: {id: string; name: string}) => (
             <P.TabelaUsuarios key={user?.id}>
               <td id="user-id">{user?.id}</td>
               <td>{user?.name}</td>
