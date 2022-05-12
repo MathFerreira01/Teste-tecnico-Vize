@@ -16,7 +16,7 @@ Para executar o projeto, será necessário instalar os seguintes programas:
 
 <h2>Construção</h2>
 
-Para construir o projeto com o React, executar o comando abaixo:
+Para construir o projeto em React com Typescript, executar o comando abaixo:
 
     npm install
     
