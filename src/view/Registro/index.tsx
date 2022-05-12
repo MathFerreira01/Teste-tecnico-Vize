@@ -15,28 +15,25 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 
-interface State {
-  email: string;
-  keyword: string;
-  name: string;
-  messageError: string;
-  showMessageError: boolean;
+interface IPassword {
   password: string;
   showPassword:boolean;
 }
 
 function Register() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [messageError, setMessageError] = useState("");
-  const [showMessageError, setShowMessageError] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [messageError, setMessageError] = useState<string>("");
+  const [showMessageError, setShowMessageError] = useState<boolean>(false);
 
-  const [keyword, setKeyword] = useState({
+  const [keyword, setKeyword] = useState<IPassword>({
     password: "",
     showPassword: false,
   });
 
-  const handleChangeSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleChangeSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
 
     const response = await registration({
@@ -62,7 +59,7 @@ function Register() {
   };
 
   const handleChangePassword =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    (prop: keyof IPassword) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword({ ...keyword, [prop]: event.target.value });
     };
 
@@ -73,13 +70,18 @@ function Register() {
     });
   };
 
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault();
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => event.preventDefault();
 
-  const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => setName(event.target.value);
+  const handleChangeName = (event: ChangeEvent<HTMLInputElement>) =>
+    setName(event.target.value);
 
   return (
     <C.Container onSubmit={handleChangeSubmit}>
+
       {showMessageError ? <span>* {messageError}</span> : null}
+
       <C.SectionInput>
         <TextField
           style={{ width: "389px" }}
@@ -128,7 +130,7 @@ function Register() {
       </C.SectionInput>
 
       <C.ButtonRegitro>
-        <Btn name="Registrar"/>
+        <Btn name="Registrar" />
       </C.ButtonRegitro>
 
       <C.ButtonLogout>
@@ -136,6 +138,7 @@ function Register() {
           <Button variant="contained">Voltar</Button>
         </Link>
       </C.ButtonLogout>
+      
     </C.Container>
   );
 }

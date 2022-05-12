@@ -16,7 +16,7 @@ function TabelaUsuarios() {
   const [removeLoading, setRemoveLoading] = useState(false);
 
   const handleChangeSubmit = async (token: State) => {
-    const response = await usersTable(token)
+    const response = await usersTable(token);
 
     if (response.data) {
       setUsers(response.data);
@@ -35,7 +35,7 @@ function TabelaUsuarios() {
 
   return (
     <>
-    {!removeLoading && <Loading />}
+      {!removeLoading && <Loading />}
 
       <Header />
 
@@ -46,13 +46,12 @@ function TabelaUsuarios() {
             <th>Nome</th>
           </P.TabelaTitulo>
 
-          {users.map((user: {id: string; name: string}) => (
+          {users.map((user: { id: string; name: string }) => (
             <P.TabelaUsuarios key={user?.id}>
               <td id="user-id">{user?.id}</td>
               <td>{user?.name}</td>
             </P.TabelaUsuarios>
           ))}
-
         </thead>
       </P.Tabela>
     </>

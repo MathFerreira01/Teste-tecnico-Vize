@@ -15,22 +15,23 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 
-interface State  {
-  email: string;
+interface IPassword {
   password: string;
   showPassword:boolean;
 }
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [messageError, setMessageError] = useState("");
-  const [showMessageError, setShowMessageError] = useState(false);
-  const [keyword, setKeyword] = useState({
+  const [email, setEmail] = useState<string>("");
+  const [messageError, setMessageError] = useState<string>("");
+  const [showMessageError, setShowMessageError] = useState<boolean>(false);
+  const [keyword, setKeyword] = useState<IPassword>({
     password: "",
     showPassword: false,
   });
 
-  const handleChangeSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleChangeSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
 
     const response = await auth({ email, password: keyword.password });
@@ -51,7 +52,7 @@ function Login() {
   };
 
   const handleChangePassword =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    (prop: keyof IPassword) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword({ ...keyword, [prop]: event.target.value });
     };
 
@@ -62,7 +63,9 @@ function Login() {
     });
   };
 
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => event.preventDefault();
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => event.preventDefault();
 
   return (
     <S.Container onSubmit={handleChangeSubmit}>
